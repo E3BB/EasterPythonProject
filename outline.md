@@ -1,7 +1,13 @@
 # Easter Python Project - outline
 Premise: Collect the Easter Bunny's eggs in a text adventure style maze.
 
-Notable parts: Display, Player, Egg, Global Singleton
+Notable parts: Display, Player, Egg, Score Singleton
+
+Checklist:
+- Display (Done)
+- Player
+- Egg
+- Score Singleton
 
 ---
 

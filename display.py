@@ -1,0 +1,34 @@
+# Text display class
+
+class Display():
+    width = 20
+    height = 10
+    wiped_display = []
+    display = []
+    for h in range(height):
+            new_line = []
+            for w in range(width):
+                new_line.append(".")
+            wiped_display.append(new_line)
+            display.append(new_line)
+
+    def __init__(s):
+        pass
+
+    def wipe(s):
+        s.display = [x[:] for x in s.wiped_display]
+        print("Wiped display!")
+
+    def change_pixel(s,x:int,y:int,letter:str):
+        if x > 0 and x <= s.width and y > 0 and y <= s.height:
+            s.display[y][x] = letter
+
+    def flip_display(s):
+        for h in range(s.height):
+            new_line = ""
+            for w in range(s.width):
+                new_line += " " + s.display[h][w]
+            print(new_line)
+
+    def tick(s):
+        s.update_display()
