@@ -2,23 +2,28 @@
 import math
 import random
 from display import Display
+from player import Player
 from misc_func import *
 
 running = True
 
 disp = Display()
+player = Player()
 
 while running:  
     
-    inp = str(input()).split()
+    disp.wipe()
 
-    try:
+    #inp = str(input()).split()
+
+    """try:
         next_x = int(inp[0])
         next_y = int(inp[1])
     except:
         running = False
         break
-    next_char = inp[2]
-    disp.wipe()
-    disp.change_pixel(next_x,next_y,next_char)
+    next_char = inp[2]"""
+    
+    new_pos = player.tick()
+    disp.change_pixel(new_pos[0],new_pos[1],"P")
     disp.flip_display()
