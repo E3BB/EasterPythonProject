@@ -1,5 +1,7 @@
 # Text display class
 
+from misc_func import *
+
 class Display():
     width = 20
     height = 10
@@ -19,8 +21,15 @@ class Display():
         s.display = [x[:] for x in s.wiped_display]
         print("Wiped display!")
 
+    def raw_change_pixel(s,x:int,y:int,letter:str):
+        if x >= 0 and x <= s.width - 1 and y >= 0 and y <= s.height - 1:
+            s.display[y][x] = letter
+    
     def change_pixel(s,x:int,y:int,letter:str):
-        if x > 0 and x <= s.width and y > 0 and y <= s.height:
+        x -= 1; y -= 1
+        x = clamp(x,0,s.width - 1)
+        y = clamp(y,0,s.height - 1)
+        if x >= 0 and x <= s.width - 1 and y >= 0 and y <= s.height - 1:
             s.display[y][x] = letter
 
     def flip_display(s):
@@ -29,6 +38,3 @@ class Display():
             for w in range(s.width):
                 new_line += " " + s.display[h][w]
             print(new_line)
-
-    def tick(s):
-        s.update_display()
