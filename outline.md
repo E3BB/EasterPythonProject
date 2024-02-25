@@ -1,13 +1,12 @@
 # Easter Python Project - outline
 Premise: Collect the Easter Bunny's eggs in a text adventure style maze.
 
-Notable parts: Display, Player, Egg, Score Singleton
+Notable parts: Display, Player, Egg
 
 Checklist:
 - Display (Done)
-- Player
-- Egg
-- Score Singleton
+- Player (Done)
+- Egg (Done)
 
 ---
 
@@ -54,16 +53,18 @@ if new_keys_pressed{s}: y += 1
 if new_keys_pressed{d}: x += 1
 ```
 
-Eggs handles picking up eggs. Pseudocode is this:
+Eggs handles picking up eggs and score-keeping. Pseudocode is this:
 ```
-x : int
-y : int
-
-x = randint(0,display.width)
-y = randint(0,display.height)
+eggs_arr = []
+#           Self
+#            \/
+egg __init__(s):
+  s.x : int = randint(0,display.width)
+  s.y : int = randint(0,display.height)
+  eggs_arr += s
 
 if player.x == x && player.y == y:
-  singleton.score += 1
-  x = -1
-  y = -1
+  score += 1
+  eggs_arr -= s
+  
 ```

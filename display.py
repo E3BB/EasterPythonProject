@@ -19,7 +19,7 @@ class Display():
 
     def wipe(s):
         s.display = [x[:] for x in s.wiped_display]
-        print("Wiped display!")
+        #print("Wiped display!")
 
     def raw_change_pixel(s,x:int,y:int,letter:str):
         if x >= 0 and x <= s.width - 1 and y >= 0 and y <= s.height - 1:
