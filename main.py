@@ -1,6 +1,5 @@
 
 import math
-from random import randint
 from display import Display
 from player import Player
 from egg import Egg
@@ -11,27 +10,42 @@ init_refresh = True
 
 disp = Display()
 player = Player()
+Egg.scr_width = disp.width
+Egg.scr_height = disp.height
+
+def clamp(x,minn,maxn):
+    if x > maxn: x = maxn
+    if x < minn: x = minn
+    return x
 
 for i in range(5):
-    Egg(randint(1,disp.width),randint(1,disp.height))
+    Egg()
+
+print()
+print("To play this easter egg hunt, you should type your input,")
+print("then hit enter; because I don't yet know how to continually")
+print("take input. - Elliott")
+print()
 
 while running and player.cont and Egg.cont:  
 
     disp.wipe()
-    
-    if init_refresh == False:
-        new_pos = player.tick()
-    else: 
-        new_pos = (player.x,player.y)
-        init_refresh = False
+
+    player.tick()
+    player.x = clamp(player.x,1,disp.width)
+    player.y = clamp(player.y,1,disp.height)
+
+    Egg.px,Egg.py = player.x,player.y
     
     player.grab_egg(Egg.eggs)
-    
+
     for i in Egg.eggs:
         disp.change_pixel(i.x,i.y,"E")
     
-    disp.change_pixel(new_pos[0],new_pos[1],"P")
-    disp.flip_display()
+    disp.change_pixel(player.x,player.y,"P")
+    if running and player.cont and Egg.cont:
+        disp.flip_display()
 
 print("Game has stopped. Your score was:", str(Egg.score) + ". GGs")
 print()
+input("Press and enter any key to close window ")

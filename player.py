@@ -14,7 +14,7 @@ class Player():
     def tick(s):
         input_valid = False
         while input_valid == False:
-            s.inp = input("New direction (w: Up, s: Down, a: Left, d: Right, stop: Stop)")
+            s.inp = input("New direction (w: Up, s: Down, a: Left, d: Right, stop: Stop) ")
             print()
             if s.inp in s.valid_dir_inputs:
                 input_valid = True
@@ -28,6 +28,6 @@ class Player():
         return (s.x,s.y)
     
     def grab_egg(s,egg_arr):
-        for i in egg_arr:
-            if i.x == s.x and i.y == s.y:
-                i.grab()
+        for egg in egg_arr:
+            if egg.x == s.x and egg.y == s.y:
+                egg.delete()

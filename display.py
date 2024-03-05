@@ -33,6 +33,10 @@ class Display():
             s.display[y][x] = letter
 
     def flip_display(s):
+        for i in range(3):
+            print()
+        print("--------------------------------------")
+        
         for h in range(s.height):
             new_line = ""
             for w in range(s.width):
